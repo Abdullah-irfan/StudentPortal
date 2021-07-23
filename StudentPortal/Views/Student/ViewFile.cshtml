@@ -1,0 +1,44 @@
+﻿@model IEnumerable<StudentPortal.Core.Model.ExcelMarkDetails>
+<style>
+    img {
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<div class="container">
+
+    <table class="table table-hover">
+
+        <tr>
+
+            <th>Student_FirstName</th>
+            <th>Student_Roll_No</th>
+            <th>English</th>
+            <th>Maths</th>
+            <th>Science</th>
+            <th>Total</th>
+            <th>Average</th>
+
+
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+    <tr>
+
+        <td> @item.Student_First_Name </td>
+        <td> @item.Student_Roll_No </td>
+        <td> @item.English </td>
+        <td> @item.Maths </td>
+        <td> @item.Sciences </td>
+        <td> @item.Total </td>
+        <td> @item.Average </td>
+
+
+    </tr>
+        }
+    </table>
+
+</div>
+

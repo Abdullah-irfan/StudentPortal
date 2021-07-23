@@ -1,0 +1,250 @@
+﻿@model StudentPortal.Core.Model.StudentRegistarionDetails
+<script src="~/js/site.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="~/css/site.css" rel="stylesheet" />
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<h1>Student Registration</h1>
+<hr />
+
+@using (Html.BeginForm("SaveStudentDetails", "Student", FormMethod.Post, new { role = "form", @id = "formDetails" }))
+{
+
+    @Html.HiddenFor(x => x.StudentId)
+<div class="container">
+
+    <div class="form-group ">
+        @Html.LabelFor(x => x.StudentFirstName, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentFirstName, new { @class = "form-control", @placeholder = "Enter Your Fisrt Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentLasttName, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentLasttName, new { @class = "form-control", @placeholder = "Enter Your Last Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentGender, new { @class = "form-label" })<span>*</span>
+        @Html.RadioButtonFor(x => x.StudentGender, "Male")Male
+        @Html.RadioButtonFor(x => x.StudentGender, "Female")Female
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentDateOfBrith, new { @class = "form-label" })<span>*</span>
+        @Html.EditorFor(x => x.StudentDateOfBrith, new { @class = "form-control", @placeholder = "Enter Your Data Of Brith" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentFatherFirstName, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentFatherFirstName, new { @class = "form-control", @placeholder = "Enter Your Father Fist Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentFatherLastName, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentFatherLastName, new { @class = "form-control", @placeholder = "Enter Your Father Last Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentMotherFirstName, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentMotherFirstName, new { @class = "form-control", @placeholder = "Enter Your Mother Fist Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentMotherLastName, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentMotherLastName, new { @class = "form-control", @placeholder = "Enter Your Mother Last Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentEmail, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentEmail, new { @class = "form-control", @placeholder = "Enter Your Email Address" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentContactNo, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentContactNo, new { @class = "form-control", @placeholder = "Enter Your Contact Number" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentFatherContactNo, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentFatherContactNo, new { @class = "form-control", @placeholder = "Enter Your Father Contact Number" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentFatherOccupation, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentFatherOccupation, new { @class = "form-control", @placeholder = "Enter Your Father Occupation" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentUserName, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentUserName, new { @class = "form-control", @placeholder = "Enter Student User Name" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.StudentPassword, new { @class = "form-label" })<span>*</span>
+        @Html.TextBoxFor(x => x.StudentPassword, new { @class = "form-control", @placeholder = "Enter Student Password" })
+    </div>
+
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" onclick="SubmitDetails()">Submit</button>
+    </div>
+    @ViewBag.Message
+    @*<environment include="Development">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        </environment>*@
+</div>
+
+}
+<script type="text/javascript">
+    $(function () {
+        $("#formDetails").validate({
+            rules: {
+                StudentFirstName:
+                {
+                    required: true
+
+                },
+                StudentLasttName:
+                {
+                    required: true
+
+                },
+                StudentGender:
+                {
+                    required: true
+                },
+                StudentDateOfBrith:
+                {
+                    required: true
+                    
+                },
+
+                StudentFatherFirstName:
+                {
+                    required: true
+                },
+
+                StudentFatherLastName:
+                {
+                    required: true
+                },
+
+                StudentMotherFirstName:
+                {
+                    required: true
+                },
+                StudentMotherLastName:
+                {
+                    required: true
+                },
+                StudentEmail:
+                {
+                    required: true,
+                    email: true
+                },
+                StudentContactNo:
+                {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                StudentFatherContactNo:
+                {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+                StudentFatherOccupation:
+                {
+                    required: true
+                },
+                StudentUserName:
+                {
+                    required: true
+                },
+                StudentPassword:
+                {
+                    required: true
+
+                }
+               
+            },
+            messages:
+            {
+                StudentFirstName:
+                {
+                    required: "EnterStudent First Name"
+
+                },
+                StudentLasttName:
+                {
+                    required: "StudentLasttName is required"
+
+                },
+               
+                StudentGender:
+                {
+                    required: "StudentGender is required"
+                },
+                StudentDateOfBrith:
+                {
+                    required: "StudentDateOfBrith is required"
+                },
+                StudentFatherFirstName:
+                {
+                    required: "StudentFather FirstName is required"
+                },
+                StudentFatherLastName:
+                {
+                    required: "StudentFather LastName is required"
+                },
+                StudentMotherFirstName:
+                {
+                    required: "SStudentMother FirstName is required"
+                },
+                StudentMotherLastName:
+                {
+                    required: "StudentMother LastName is required"
+                },
+                StudentEmail:
+                {
+                    required: "Email is required",
+                    regex: "Email is Invalid"
+                },
+                StudentContactNo:
+                {
+                    required: "StudentContactNo is required"
+                },
+                StudentFatherContactNo:
+                {
+                    required: "StudentFatherContactNo is required"
+                },
+                StudentFatherOccupation:
+                {
+                    required: "StudentFatherOccupation is required"
+                },
+                StudentUserName:
+                {
+                    required: "StudentUserName is required"
+                },
+                StudentPassword:
+                {
+                    required: "StudentPassword is required"
+                }
+            }
+        });
+    });
+    function SubmitDetails() {
+        if ($("#formDetails").validate()) {
+            $("#formDetails").submit();
+        }
+    }
+</script>
+
+
+
+

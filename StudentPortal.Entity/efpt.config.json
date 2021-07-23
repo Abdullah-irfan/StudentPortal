@@ -1,0 +1,56 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "StudentportalmanagementEntity",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": null,
+   "ProjectRootNamespace": "StudentPortal.Entity",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[ExcelMarkDb]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ExcelStudentMarksDb]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StaffLoginDetailsDb]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentDb]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentDetailsDb]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[StudentExcelDb]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "(localdb)\\MSSQLLocalDB.StudentPortalManagement",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

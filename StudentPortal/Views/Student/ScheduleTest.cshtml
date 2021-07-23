@@ -1,0 +1,95 @@
+﻿@model StudentPortal.Core.Model.ExcelDetails
+<script src="~/js/site.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="~/css/site.css" rel="stylesheet" />
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+<style>
+    span { color: red; }
+    h3 { color: orange; }
+</style>
+@using (Html.BeginForm("Schedule", "Student", FormMethod.Post, new { role = "form", @id = "formDetails" }))
+{
+
+    @Html.HiddenFor(x => x.StudentId)
+    <div class="container">
+        
+        <div class="form-group col-md-6 ">
+            <h3>Student Test Schedule</h3>
+            @Html.LabelFor(x => x.Student_Roll_No, new { @class = "form-label" })<span>*</span>
+            @Html.TextBoxFor(x => x.Student_Roll_No, new { @class = "form-control", @placeholder = "Enter Roll Number" })
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(x => x.Subject, new { @class = "form-label" })<span>*</span>
+            @Html.DropDownListFor(x => x.Subject, new List<SelectListItem> { new SelectListItem() { Text = "---Select Department---", Value = "" },
+                 new SelectListItem { Text="English", Value="English"},
+        new SelectListItem { Text="Maths", Value="Maths"},
+        new SelectListItem { Text="Science", Value="Science"}})
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(x => x.ScheduleTest, new { @class = "form-label" })<span>*</span>
+            @Html.EditorFor(x => x.ScheduleTest, new { @class = "form-control", @placeholder = "Select Date and Time" })
+        </div>
+
+
+        <div class="form-group col-md-3">
+            <button type="submit" class="btn btn-outline-primary" onclick="SubmitDetails()">Submit</button>
+        </div>
+
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#formDetails").validate({
+            rules: {
+                Student_Roll_No:
+                {
+                    required: true
+
+                },
+                Subject:
+                {
+                    required: true
+                },
+                ScheduleTest:
+                {
+                    required: true
+                }
+            },
+
+
+            messages:
+            {
+                UserName:
+                {
+                    Student_Roll_No: "Enter Student_Roll_No"
+                },
+                Password:
+                {
+                    required: "Select Subject"
+
+                },
+                ScheduleTest:
+                {
+                    required: "Select ScheduleTest Time"
+                }
+
+            }
+        });
+    });
+    function SubmitDetails() {
+        if ($("#formDetails").validate()) {
+            $('spin').addClass('fa fa-spinner fa-spin');
+
+            $("#formDetails").submit();
+        }
+    }
+
+
+</script>

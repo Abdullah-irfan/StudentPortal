@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    .b {
+        margin-top: 15%;
+        margin-left: 38%;
+        padding: 3%;
+    }
+
+    button {
+    }
+</style>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="ff">
+
+            <div class=" b">
+
+                <div><img src="~/image/871252.png" width="50%" /></div>
+                <button class="btn btn-outline-success" onclick="studentadd()">Student Login</button>
+
+                <button class="btn btn-outline-primary" onclick="staffadd()">Staff Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<script>
+    function studentadd() {
+        window.location.href = "@Url.Action("StudentLoginpage", "Student")";
+    }
+</script>
+
+<script>
+    function staffadd() {
+        window.location.href = "@Url.Action("StaffLogin", "Student")";
+    }
+</script>
+
+

@@ -1,0 +1,100 @@
+﻿@model List<StudentPortal.Core.Model.StudentRegistarionDetails>
+<button class="btn btn-outline-primary" onclick="adddetails()">Add StudentDetails</button>
+
+@if (TempData["MailNotify"] != null)
+{
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+            $(document).ready(function () {
+                alert("@TempData["MailNotify"]");
+            });
+    </script>
+}
+<div class="container">
+
+
+    <table class="table table-hover container">
+        <thead class="thead-dark">
+            <tr>
+                <th>Student_Roll_Number</th>
+                <th>Student_First_Name</th>
+                <th>Student_Last_Name</th>
+                <th>Gender</th>
+                <th>DateOfBrith</th>
+                <th>Father_First_Name</th>
+                <th>Father_Last_Name</th>
+                <th>Mother_First_Name</th>
+                <th>Morther_Last_Name</th>
+                <th>Email_Id</th>
+                <th>Student_ContactNo</th>
+                <th>Father_ContactNo</th>
+                <th>Father_Occupation</th>
+                <th>Student_UserName</th>
+                <th>Student_Password</th>
+                <th>Edit_Record</th>
+                <th>Delete_Record</th>
+                <th>Test_Schedule</th>
+
+
+            </tr>
+        </thead>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td> @item.StudentRollNumber </td>
+                <td> @item.StudentFirstName </td>
+                <td> @item.StudentLasttName </td>
+                <td> @item.StudentGender</td>
+                <td> @item.StudentDateOfBrith </td>
+                <td> @item.StudentFatherFirstName</td>
+                <td> @item.StudentFatherLastName</td>
+                <td> @item.StudentMotherFirstName</td>
+                <td> @item.StudentMotherLastName</td>
+                <td> @item.StudentEmail</td>
+                <td> @item.StudentContactNo</td>
+                <td> @item.StudentFatherContactNo</td>
+                <td> @item.StudentFatherOccupation</td>
+                <td> @item.StudentUserName</td>
+                <td> @item.StudentPassword</td>
+
+                <td><button class="btn btn-warning design" id="@item.StudentId " onclick="editPage(this.id)">Edit</button></td>
+                <td><button class="btn btn-danger design" id="@item.StudentId " onclick="Delete(this.id)">delete</button></td>
+                <td><button class="btn btn-primary design" id="@item.StudentId " onclick="Schedule(this.id)">Schedule Test</button></td>
+            </tr>
+        }
+    </table>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('input[type="file"]').on("change", function () {
+            var filename = $(this).val().split("\\").pop();
+            $(this).next(".custom-file-label").html(filename);
+        });
+    });
+function Delete(id) {
+        if (confirm("Are you Sure Delete Your Record ?")) {
+            window.location.href = "@Url.Action("DeleteStudentDetails", "Student")?Id=" + id;
+            }
+            }
+            function editPage(id) {
+            window.location.href = "@Url.Action("EditStudentDetails", "Student")?Id=" + id;
+    }
+
+    function Schedule(id) {
+            window.location.href = "@Url.Action("TestSchedule", "Student")?Id=" + id;
+    }
+
+
+</script>
+
+<script>
+    function adddetails() {
+        window.location.href = "@Url.Action("SaveStudentDetails", "Student")";
+    }
+</script>

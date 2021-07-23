@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="5.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentPortal.Core\StudentPortal.Core.csproj" />
+    <ProjectReference Include="..\StudentPortal.Entity\StudentPortal.Entity.csproj" />
+    <ProjectReference Include="..\StudentPortal.Repository\StudentPortal.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

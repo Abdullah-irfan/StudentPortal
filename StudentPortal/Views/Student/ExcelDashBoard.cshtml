@@ -1,0 +1,70 @@
+﻿@model IEnumerable<StudentPortal.Core.Model.Model1.StudentInformationDetails>
+<script src="~/js/site.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+<style>
+    .row { margin-top: 5%; margin-left: 30%; }
+    h4{
+        color:dimgrey;
+    }
+    li{
+        color:gray;
+    }
+    span{
+        color:red;
+    }
+</style>
+
+
+<div class="row">
+    @using (Html.BeginForm("Excelupload", "Student", FormMethod.Post, new { enctype = "multipart/form-data", id = "formDetails" }))
+    {
+<label>Choose you file</label>
+                <input type="file" accept="xlsx/xls*" name="UploadedFile" id="fileUploadvalidate">
+                <button class="btn btn-outline-success" type="submit">Upload</button>
+                <hr />
+                <h4>Note:</h4><soan>*</soan>
+                <ul>
+                    <li>Name with special characters cann't acceptable</li>
+                    <li>Check Before Updating the file weather is mark cell Empty or filled</li>
+                    <li>Empty cell not acceptable</li>
+                </ul>
+
+     }
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#formDetails").validate({
+            rules: {
+                UploadedFile:
+                {
+                    required: true
+
+                }
+
+            },
+
+
+            messages:
+            {
+                UploadedFile:
+                {
+                    required: " Upload the File"
+                }
+
+            }
+        });
+    });
+    function SubmitDetails() {
+        if ($("#formDetails").validate()) {
+            $("#formDetails").submit();
+        }
+    }
+</script>
